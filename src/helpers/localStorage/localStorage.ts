@@ -39,3 +39,17 @@ export const getLocalPassword = () => {
 export const removeLocalPassword = () => {
   localStorage.removeItem(keyPassword);
 };
+
+export const setTheme = (theme: 'light' | 'dark') => {
+  localStorage.setItem('theme', theme);
+};
+
+export const getTheme = () => {
+  const theme = localStorage.getItem('theme');
+
+  if (theme === 'dark') {
+    return 'dark';
+  } else {
+    return 'light';
+  }
+};

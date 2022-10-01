@@ -9,6 +9,8 @@ export const Container = styled.div`
   padding: ${pixelToRem(16)};
   gap: ${pixelToRem(24)};
 
+  background-color: ${({ theme }) => theme.palette.background.default};
+
   height: calc(100vh - ${pixelToRem(32)});
 
   img {

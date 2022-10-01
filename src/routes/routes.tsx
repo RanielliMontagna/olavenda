@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes as RoutesV6, Route, Navigate } from 'react-router-dom';
 
-import { PublicWrapper } from 'components/layout/publicWrapper';
-import { PrivateWrapper } from 'components/layout/privateWrapper';
+import { PublicWrapper } from 'components/layout/publicWrapper/publicWrapper';
+import { PrivateWrapper } from 'components/layout/privateWrapper/privateWrapper';
 
 import { Pdv } from 'containers/pdv/pdv';
 import { Produtos } from 'containers/produtos/produtos';
@@ -10,7 +10,7 @@ import { Login } from 'containers/login/login';
 import { NotFound } from 'containers/404/404';
 
 const Routes = () => {
-  const _isAuthenticated = false;
+  const _isAuthenticated = true;
 
   return (
     <BrowserRouter>

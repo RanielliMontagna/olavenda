@@ -1,19 +1,29 @@
-import { ThemeProvider } from '@mui/material';
+import { createTheme, StyledEngineProvider, ThemeProvider } from '@mui/material';
 import { SnackbarProvider } from 'notistack';
+
 import { Routes } from 'routes/routes';
 
 import GlobalStyles from 'styles/global.styles';
-import theme from 'styles/theme';
+import { lightTheme, darkTheme } from 'styles/theme';
+import useApp from 'store/app/app';
 
-function app() {
+const App = () => {
+  const { themeMode } = useApp();
+
+  const theme = createTheme({
+    palette: themeMode === 'light' ? lightTheme.palette : darkTheme.palette,
+  });
+
   return (
-    <ThemeProvider theme={theme}>
-      <SnackbarProvider maxSnack={3}>
-        <GlobalStyles />
-        <Routes />
-      </SnackbarProvider>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={createTheme(theme)}>
+        <SnackbarProvider maxSnack={3}>
+          <GlobalStyles />
+          <Routes />
+        </SnackbarProvider>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
-}
+};
 
-export default app;
+export default App;
