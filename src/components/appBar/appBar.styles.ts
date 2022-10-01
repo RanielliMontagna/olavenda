@@ -14,4 +14,5 @@ export const AppBarContainer = styled.div`
   justify-content: space-between;
 
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out;
 `;

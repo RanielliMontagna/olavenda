@@ -13,11 +13,13 @@ const PrivateWrapper = () => {
   }
 
   return (
-    <div style={{ display: 'flex', height: '100vh' }}>
+    <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
       <Drawer />
       <PrivateWrapperContainer>
         <AppBar />
-        <Outlet />
+        <div style={{ overflow: 'auto', height: '100%' }}>
+          <Outlet />
+        </div>
       </PrivateWrapperContainer>
     </div>
   );

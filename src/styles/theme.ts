@@ -34,8 +34,14 @@ const darkTheme = createTheme({
     primary,
     secondary,
     background: {
-      default: '#424242',
+      default: '#303030',
       paper: '#212121',
+    },
+  },
+  typography: {
+    allVariants: {
+      color: '#ffffff',
+      transition: 'color 0.3s ease-in-out',
     },
   },
 });

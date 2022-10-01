@@ -3,13 +3,13 @@ import { Grid } from '@mui/material';
 import { GridPaper } from 'components/gridPaper/gridPaper';
 import { PageHeader } from 'components/pageHeader/pageHeader';
 
-const Pdv = () => {
+const Vendas = () => {
   return (
     <Grid container padding={2}>
-      <PageHeader title="Ponto de venda" />
+      <PageHeader title="Vendas" />
       <GridPaper xs={12}></GridPaper>
     </Grid>
   );
 };
 
-export { Pdv };
+export { Vendas };

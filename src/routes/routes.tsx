@@ -6,6 +6,8 @@ import { PrivateWrapper } from 'components/layout/privateWrapper/privateWrapper'
 import { Pdv } from 'containers/pdv/pdv';
 import { Produtos } from 'containers/produtos/produtos';
 import { Clientes } from 'containers/clientes/clientes';
+import { Vendas } from 'containers/vendas/vendas';
+
 import { Login } from 'containers/login/login';
 import { NotFound } from 'containers/404/404';
 
@@ -20,6 +22,7 @@ const Routes = () => {
             <Route path="/pdv" element={<Pdv />} />
             <Route path="/produtos" element={<Produtos />} />
             <Route path="/clientes" element={<Clientes />} />
+            <Route path="/vendas" element={<Vendas />} />
             <Route path="/404" element={<NotFound />} />
 
             <Route path="/" element={<Navigate to="/pdv" />} />
