@@ -12,9 +12,9 @@ const NotFound = () => {
       <img src="assets/svgs/404.svg" alt="404" />
       <div style={{ ...center, flexDirection: 'column', gap: 8 }}>
         <Typography variant="h1">Página não encontrada</Typography>
-        <h2>Sinto muito, a página que você está procurando não existe ou foi removida.</h2>
+        <Typography variant="h2">Sinto muito, a página que você está procurando não existe ou foi removida.</Typography>
       </div>
-      <Button variant="outlined" onClick={() => _navigate('/')}>
+      <Button variant="contained" onClick={() => _navigate('/')}>
         Voltar para a página inicial
       </Button>
     </Container>
