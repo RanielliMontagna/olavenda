@@ -7,7 +7,7 @@ const Pdv = () => {
   return (
     <Grid container padding={2}>
       <PageHeader title="Ponto de venda" />
-      <GridPaper xs={12}></GridPaper>
+      <GridPaper item xs={12}></GridPaper>
     </Grid>
   );
 };

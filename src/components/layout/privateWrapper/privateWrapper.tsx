@@ -7,11 +7,15 @@ import { AppBar } from 'components/appBar/appBar';
 import { Loading } from 'components/loading/loading';
 
 import { usePathname } from 'hooks/usePathname';
+import { useNotification } from 'hooks/useNotification/useNotification';
 import useApp from 'store/app/app';
 
 const PrivateWrapper = () => {
   const pathname = usePathname();
   const { loading } = useApp();
+
+  // Notificação
+  useNotification();
 
   if (pathname === '404') {
     return <Outlet />;

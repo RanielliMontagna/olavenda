@@ -11,13 +11,17 @@ import { Vendas } from 'containers/vendas/vendas';
 import { Login } from 'containers/login/login';
 import { NotFound } from 'containers/404/404';
 
+import useAuth from 'store/auth/auth';
+
 const Routes = () => {
-  const _isAuthenticated = true;
+  const { isAuthenticated } = useAuth();
+
+  // const isAuthenticated = true;
 
   return (
     <BrowserRouter>
       <RoutesV6>
-        {_isAuthenticated ? (
+        {isAuthenticated ? (
           <Route path="/" element={<PrivateWrapper />}>
             <Route path="/pdv" element={<Pdv />} />
             <Route path="/produtos" element={<Produtos />} />
@@ -26,6 +30,7 @@ const Routes = () => {
             <Route path="/404" element={<NotFound />} />
 
             <Route path="/" element={<Navigate to="/pdv" />} />
+            <Route path="/login" element={<Navigate to="/pdv" />} />
             <Route path="*" element={<Navigate to="/404" />} />
           </Route>
         ) : (

@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 export const DivLogin = styled.div`
   width: 50%;
   height: 100vh;
-  background-color: ${({ theme }) => theme.palette.common.white};
+  background-color: ${({ theme }) => theme.palette.background.default};
   overflow: auto;
 
   ::-webkit-scrollbar {
