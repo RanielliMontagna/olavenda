@@ -23,6 +23,7 @@ const App = () => {
             vertical: 'top',
             horizontal: 'right',
           }}
+          autoHideDuration={2000}
         >
           <GlobalStyles />
           <Routes />

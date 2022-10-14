@@ -1,14 +1,16 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Typography,
+} from '@mui/material';
 import { excluirProduto } from 'service/produtos/produtos';
-import type { IProdutoValues } from 'service/produtos/produtos.types';
 import useApp from 'store/app/app';
 
-interface IRemoverProdutoDialogProps {
-  open: boolean;
-  handleClose: () => void;
-  handleBuscarProdutos: () => void;
-  produto: IProdutoValues;
-}
+import type { IRemoverProdutoDialogProps } from './removerProdutoDialog.types';
 
 export const RemoverProdutoDialog = ({
   open,
@@ -20,6 +22,10 @@ export const RemoverProdutoDialog = ({
 
   const _handleRemoverProduto = async () => {
     try {
+      if (!produto) {
+        throw new Error('Produto não informado');
+      }
+
       const res = await excluirProduto(produto.id);
 
       if (res.data) {
@@ -38,14 +44,20 @@ export const RemoverProdutoDialog = ({
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+      <DialogTitle>
+        <Typography variant="h6">Excluir produto?</Typography>
+      </DialogTitle>
       <DialogContent>
-        <DialogContentText>Você tem certeza que deseja remover o produto {produto?.nome}</DialogContentText>
+        <DialogContentText>
+          Você tem certeza que deseja remover o produto <b>{produto?.nome}?</b>
+        </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Cancelar</Button>
         <Button onClick={_handleRemoverProduto} autoFocus color="error">
           Excluir produto
+        </Button>
+        <Button onClick={handleClose} variant="outlined" color="inherit">
+          Cancelar
         </Button>
       </DialogActions>
     </Dialog>

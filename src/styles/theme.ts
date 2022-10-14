@@ -26,6 +26,18 @@ const lightTheme = createTheme({
       paper: '#fafafa',
     },
   },
+  components: {
+    MuiButton: {
+      defaultProps: {
+        variant: 'contained',
+      },
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+        },
+      },
+    },
+  }
 });
 
 const darkTheme = createTheme({

@@ -1,16 +1,24 @@
-import { DataGrid } from '@mui/x-data-grid';
+import { useState } from 'react';
+import { DataGrid, GridRenderCellParams } from '@mui/x-data-grid';
 import { Button, Grid } from '@mui/material';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { FiDelete, FiEdit } from 'react-icons/fi';
 
 import { colunasProdutos } from './produtos.static';
 
 import { GridPaper } from 'components/gridPaper/gridPaper';
 import { PageHeader } from 'components/pageHeader/pageHeader';
 import { useProdutos } from './useProdutos';
+
 import { center } from 'styles/shared.styles';
+import type { IRemoverProdutoState } from './removerProdutoDialog/removerProdutoDialog.types';
+
+import { RemoverProdutoDialog } from './removerProdutoDialog/removerProdutoDialog';
 
 const Produtos = () => {
-  const { data } = useProdutos();
+  const { data, handleBuscarProdutos } = useProdutos();
+
+  const [excluirProdutoDialog, setExcluirProdutoDialog] = useState<IRemoverProdutoState>({ open: false });
 
   return (
     <Grid container padding={2}>
@@ -24,10 +32,45 @@ const Produtos = () => {
       />
       <GridPaper item xs={12}>
         <DataGrid
-          rows={data.map((value) => ({
-            ...value,
-          }))}
-          columns={colunasProdutos}
+          rows={data}
+          columns={colunasProdutos.map((value) => {
+            if (value.field === 'acoes') {
+              return {
+                ...value,
+                renderCell: (params: GridRenderCellParams) => (
+                  <Grid container spacing={2} alignItems="center">
+                    <Grid
+                      item
+                      style={{
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <FiEdit size={24} />
+                    </Grid>
+                    <Grid
+                      item
+                      style={{
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                      }}
+                      onClick={() => {
+                        setExcluirProdutoDialog({ open: true, produto: params.row });
+                      }}
+                    >
+                      <FiDelete size={24} />
+                    </Grid>
+                  </Grid>
+                ),
+              };
+            }
+
+            return {
+              ...value,
+            };
+          })}
           isRowSelectable={() => false}
           components={{
             NoRowsOverlay: () => (
@@ -40,6 +83,14 @@ const Produtos = () => {
           hideFooter
           disableColumnMenu
         />
+        {excluirProdutoDialog.open && (
+          <RemoverProdutoDialog
+            open
+            produto={excluirProdutoDialog.produto}
+            handleBuscarProdutos={handleBuscarProdutos}
+            handleClose={() => setExcluirProdutoDialog({ open: false })}
+          />
+        )}
       </GridPaper>
     </Grid>
   );

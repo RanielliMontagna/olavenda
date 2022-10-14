@@ -37,6 +37,7 @@ const Routes = () => {
           <Route path="/" element={<PublicWrapper />}>
             <Route path="/login" element={<Login />} />
 
+            <Route path="/" element={<Navigate to="/login" />} />
             <Route path="*" element={<Navigate to="/login" />} />
           </Route>
         )}
