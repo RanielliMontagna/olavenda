@@ -3,7 +3,7 @@ export interface IProdutoValues {
   nome: string;
   valor: number;
   codBar: string;
-  categoria: number;
+  categoria: string;
   classificacaoFiscal: number;
 }
 

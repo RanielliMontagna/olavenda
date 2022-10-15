@@ -37,7 +37,13 @@ const lightTheme = createTheme({
         },
       },
     },
-  }
+    MuiTextField: {
+      defaultProps: {
+        variant: 'outlined',
+        size: 'small',
+      },
+    },
+  },
 });
 
 const darkTheme = createTheme({

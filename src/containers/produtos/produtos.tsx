@@ -14,18 +14,30 @@ import { center } from 'styles/shared.styles';
 import type { IRemoverProdutoState } from './removerProdutoDialog/removerProdutoDialog.types';
 
 import { RemoverProdutoDialog } from './removerProdutoDialog/removerProdutoDialog';
+import { IAdicionarEditarProdutoState } from 'shared/adicionarEditarProdutoDialog/adicionarEditarProduto.types';
+import { AdicionarEditarProdutoDialog } from 'shared/adicionarEditarProdutoDialog/adicionarEditarProdutoDialog';
 
 const Produtos = () => {
   const { data, handleBuscarProdutos } = useProdutos();
 
-  const [excluirProdutoDialog, setExcluirProdutoDialog] = useState<IRemoverProdutoState>({ open: false });
+  const [adicionarEditarProdutoDialog, setAdicionarEditarProdutoDialog] =
+    useState<IAdicionarEditarProdutoState>({ open: false });
+  const [excluirProdutoDialog, setExcluirProdutoDialog] = useState<IRemoverProdutoState>({
+    open: false,
+  });
 
   return (
     <Grid container padding={2}>
       <PageHeader
         title="Produtos"
         rightContent={
-          <Button startIcon={<AiOutlinePlus color="white" />} variant="contained">
+          <Button
+            startIcon={<AiOutlinePlus color="white" />}
+            variant="contained"
+            onClick={() => {
+              setAdicionarEditarProdutoDialog({ open: true });
+            }}
+          >
             Novo Produto
           </Button>
         }
@@ -45,6 +57,12 @@ const Produtos = () => {
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
+                      }}
+                      onClick={() => {
+                        setAdicionarEditarProdutoDialog({
+                          open: true,
+                          produto: params.row,
+                        });
                       }}
                     >
                       <FiEdit size={24} />
@@ -89,6 +107,14 @@ const Produtos = () => {
             produto={excluirProdutoDialog.produto}
             handleBuscarProdutos={handleBuscarProdutos}
             handleClose={() => setExcluirProdutoDialog({ open: false })}
+          />
+        )}
+        {adicionarEditarProdutoDialog.open && (
+          <AdicionarEditarProdutoDialog
+            open
+            produto={adicionarEditarProdutoDialog.produto}
+            handleBuscarProdutos={handleBuscarProdutos}
+            handleClose={() => setAdicionarEditarProdutoDialog({ open: false })}
           />
         )}
       </GridPaper>
