@@ -94,8 +94,12 @@ const Produtos = () => {
           components={{
             NoRowsOverlay: () => (
               <div style={{ ...center, flexDirection: 'column', height: '100%', gap: 16 }}>
-                <img src="/assets/svgs/noDataProducts.svg" alt="No data" style={{ width: 400 }} />
-                <h2>Nenhum produto encontrado</h2>
+                <img
+                  src="/assets/svgs/noDataProducts.svg"
+                  alt="No data"
+                  style={{ maxWidth: 400, width: '90%' }}
+                />
+                <h2 style={{ textAlign: 'center' }}>Nenhum produto encontrado</h2>
               </div>
             ),
           }}

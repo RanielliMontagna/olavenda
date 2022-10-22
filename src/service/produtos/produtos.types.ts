@@ -26,5 +26,5 @@ export interface IEditarProduto extends INovoProduto {
 }
 
 export interface IBuscarProduto {
-  search?: string;
+  id?: string;
 }

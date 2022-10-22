@@ -4,13 +4,13 @@ import { urls } from 'service/urls';
 import { IBuscarProduto, IEditarProduto, INovoProduto } from './produtos.types';
 
 // Buscar todos os produtos
-export const buscarProdutos = async ({ search }: IBuscarProduto) => {
+export const buscarProdutos = async ({ id }: IBuscarProduto) => {
   const headers = makeHeaders();
 
   const response = await api.get(`${urls.produtos}/buscar/all`, {
     headers,
     params: {
-      search,
+      id,
     },
   });
 
