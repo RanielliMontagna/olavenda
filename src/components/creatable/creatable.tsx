@@ -46,7 +46,7 @@ export const Creatable = ({
             <Autocomplete
               size="small"
               fullWidth
-              value={rest?.value || undefined}
+              value={rest?.value || value || null}
               onChange={(_, values) => onChange(values)}
               options={options}
               noOptionsText={
@@ -73,7 +73,9 @@ export const Creatable = ({
                     }
                   : params.InputProps;
 
-                return <TextField {...params} onChange={onChange} InputProps={endAdornment} {...textFieldProps} />;
+                return (
+                  <TextField {...params} onChange={onChange} InputProps={endAdornment} {...textFieldProps} />
+                );
               }}
             />
           </SDivAutoComplete>

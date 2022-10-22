@@ -16,9 +16,10 @@ const Autocomplete = ({ name, defaultValue, rules, shouldUnregister, options, ..
       defaultValue={defaultValue}
       rules={rules}
       shouldUnregister={shouldUnregister}
-      render={({ field: { onChange } }) => (
+      render={({ field: { onChange, value } }) => (
         <AutocompleteMui
           size="small"
+          value={value || null}
           onChange={(_, values) => onChange(values)}
           options={options}
           renderInput={(params) => <TextField {...params} {...rest} />}

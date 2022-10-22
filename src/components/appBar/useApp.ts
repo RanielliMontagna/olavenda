@@ -2,8 +2,10 @@ import { useState } from 'react';
 
 import { setTheme } from 'helpers/localStorage/localStorage';
 import useApp from 'store/app/app';
+import useAuth from 'store/auth/auth';
 
 const useAppBar = () => {
+  const { clearStore } = useAuth();
   const { themeMode, setThemeMode } = useApp();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -26,8 +28,7 @@ const useAppBar = () => {
   };
 
   const handleLogout = () => {
-    //TODO: implement logout
-
+    clearStore();
     handleCloseMenu();
   };
 

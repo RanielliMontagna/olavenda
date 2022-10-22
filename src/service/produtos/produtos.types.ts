@@ -16,13 +16,13 @@ export interface IProduto {
 export interface INovoProduto {
   nome: string;
   valor: number;
-  codBar: string;
-  categoria: number;
+  codBar?: string;
+  categoria?: number;
   classificacaoFiscal: number;
 }
 
 export interface IEditarProduto extends INovoProduto {
-  codigo: number;
+  id: number;
 }
 
 export interface IBuscarProduto {

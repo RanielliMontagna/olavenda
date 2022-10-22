@@ -15,7 +15,8 @@ import type { IRemoverProdutoState } from './removerProdutoDialog/removerProduto
 
 import { RemoverProdutoDialog } from './removerProdutoDialog/removerProdutoDialog';
 import { IAdicionarEditarProdutoState } from 'shared/adicionarEditarProdutoDialog/adicionarEditarProduto.types';
-import { AdicionarEditarProdutoDialog } from 'shared/adicionarEditarProdutoDialog/adicionarEditarProdutoDialog';
+import AdicionarEditarProdutoDialog from 'shared/adicionarEditarProdutoDialog/adicionarEditarProdutoDialog';
+import { ProdutoProvider } from './produto.context';
 
 const Produtos = () => {
   const { data, handleBuscarProdutos } = useProdutos();
@@ -122,4 +123,12 @@ const Produtos = () => {
   );
 };
 
-export { Produtos };
+const ProdutosWrapper = () => {
+  return (
+    <ProdutoProvider>
+      <Produtos />;
+    </ProdutoProvider>
+  );
+};
+
+export default ProdutosWrapper;

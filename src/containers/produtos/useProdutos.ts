@@ -22,6 +22,7 @@ const useProdutos = () => {
 
   useEffect(() => {
     handleBuscarProdutos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {

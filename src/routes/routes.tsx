@@ -4,7 +4,7 @@ import { PublicWrapper } from 'components/layout/publicWrapper/publicWrapper';
 import { PrivateWrapper } from 'components/layout/privateWrapper/privateWrapper';
 
 import { Pdv } from 'containers/pdv/pdv';
-import { Produtos } from 'containers/produtos/produtos';
+import Produtos from 'containers/produtos/produtos';
 import { Clientes } from 'containers/clientes/clientes';
 import { Vendas } from 'containers/vendas/vendas';
 

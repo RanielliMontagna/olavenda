@@ -62,6 +62,24 @@ const darkTheme = createTheme({
       transition: 'color 0.3s ease-in-out',
     },
   },
+  components: {
+    MuiButton: {
+      defaultProps: {
+        variant: 'contained',
+      },
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+        },
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        variant: 'outlined',
+        size: 'small',
+      },
+    },
+  },
 });
 
 export { lightTheme, darkTheme };

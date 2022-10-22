@@ -1,7 +1,7 @@
 import { api, makeHeaders } from 'service/api';
 import { urls } from 'service/urls';
 
-import { IBuscarProduto, INovoProduto, IProduto } from './produtos.types';
+import { IBuscarProduto, IEditarProduto, INovoProduto } from './produtos.types';
 
 // Buscar todos os produtos
 export const buscarProdutos = async ({ search }: IBuscarProduto) => {
@@ -26,7 +26,7 @@ export const adicionarProduto = async (produto: INovoProduto) => {
 };
 
 // Editar um produto
-export const editarProduto = async (produto: IProduto) => {
+export const editarProduto = async (produto: IEditarProduto) => {
   const headers = makeHeaders();
   const response = await api.post(`${urls.produtos}/edit`, produto, { headers });
 
