@@ -1,8 +1,9 @@
 import { createTheme } from '@mui/material/styles';
 
-// Create a theme instance.
+//cores não vibrantes
+export const coresCategorias = ['#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4'];
 
-const primary = {
+export const primary = {
   main: '#7b73f1',
   dark: '#3B3773',
   light: '#C2BFF4',

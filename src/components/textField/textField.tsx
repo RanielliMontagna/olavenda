@@ -5,7 +5,15 @@ import { Grid, TextField as TextFieldMui } from '@mui/material';
 
 import * as masks from './masks';
 
-const TextField = ({ name, rules, defaultValue, shouldUnregister, mask, onInputChange, ...rest }: TextFieldProps) => {
+const TextField = ({
+  name,
+  rules,
+  defaultValue,
+  shouldUnregister,
+  mask,
+  onInputChange,
+  ...rest
+}: TextFieldProps) => {
   const useForm = useFormContext();
   if (!useForm) {
     throw new Error('Para usar o <TextField /> é necessário que ele esteja dentro de um <Form />');
@@ -35,7 +43,7 @@ const TextField = ({ name, rules, defaultValue, shouldUnregister, mask, onInputC
       defaultValue={defaultValue}
       shouldUnregister={shouldUnregister}
       render={({ field: { value, onChange } }) => (
-        <Grid display="flex" flexDirection="column">
+        <Grid display="flex" flexDirection="column" style={{ width: '100%' }}>
           <TextFieldMui
             size="small"
             variant="outlined"
