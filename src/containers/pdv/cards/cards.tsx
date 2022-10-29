@@ -7,7 +7,7 @@ import { Autocomplete } from 'components/autoComplete/autoComplete';
 import { useCards } from './useCards';
 
 const Cards = () => {
-  const { data } = useCards();
+  const { data, handleBuscarProdutos } = useCards();
 
   return (
     <CardsContainerExterno>
@@ -15,6 +15,7 @@ const Cards = () => {
         <TextField
           name="search"
           label="Pesquisar"
+          onInputChange={handleBuscarProdutos}
           variant="outlined"
           fullWidth
           placeholder="Buscar produto"

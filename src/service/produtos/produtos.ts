@@ -17,6 +17,16 @@ export const buscarProdutos = async ({ id }: IBuscarProduto) => {
   return response;
 };
 
+export const buscarProdutoComFiltro = async ({ search }: IBuscarProduto) => {
+  const headers = makeHeaders();
+
+  const response = await api.get(`${urls.produtos}/buscar/${search}`, {
+    headers,
+  });
+
+  return response;
+};
+
 // Adicionar um produto
 export const adicionarProduto = async (produto: INovoProduto) => {
   const headers = makeHeaders();
