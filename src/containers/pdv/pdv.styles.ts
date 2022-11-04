@@ -21,8 +21,9 @@ export const CartContainer = styled.div`
   padding: ${pixelToRem(16)};
 `;
 
-export const CartItems = styled.div`
+export const CartItemsContainer = styled.div`
   height: 100%;
+  overflow-y: auto;
   box-shadow: 0 0 5px 0
     ${({ theme }) => (theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)')};
   border-radius: ${pixelToRem(4)};

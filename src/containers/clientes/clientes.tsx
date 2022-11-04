@@ -95,7 +95,7 @@ const Clientes = () => {
             NoRowsOverlay: () => (
               <div style={{ ...center, flexDirection: 'column', height: '100%', gap: 16 }}>
                 <img
-                  src="/assets/svgs/noDataProducts.svg"
+                  src="/assets/svgs/noDataClients.svg"
                   alt="No data"
                   style={{ maxWidth: 400, width: '90%' }}
                 />
