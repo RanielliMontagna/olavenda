@@ -4,10 +4,10 @@ import { InputAdornment } from '@mui/material';
 import { FiSearch } from 'react-icons/fi';
 import { TextField } from 'components/textField/textField';
 import { Autocomplete } from 'components/autoComplete/autoComplete';
-import { useCards } from './useCards';
+import { usePdvContext } from '../pdv.context';
 
 const Cards = () => {
-  const { data, handleBuscarProdutos } = useCards();
+  const { produtos, handleBuscarProdutos } = usePdvContext();
 
   return (
     <CardsContainerExterno>
@@ -45,7 +45,7 @@ const Cards = () => {
       </div>
       <CardsContainerInterno>
         <div>
-          {data.map((value) => (
+          {produtos.map((value) => (
             <Card key={value.id} {...value} />
           ))}
         </div>

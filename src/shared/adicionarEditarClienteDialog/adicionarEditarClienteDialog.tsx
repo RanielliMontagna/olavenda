@@ -18,8 +18,6 @@ const AdicionarEditarClienteDialog = (props: IAdicionarEditarClienteDialog) => {
     })
     .required();
 
-  console.log(props.cliente);
-
   return (
     <Dialog open={props.open} onClose={props.handleClose}>
       <DialogTitle>

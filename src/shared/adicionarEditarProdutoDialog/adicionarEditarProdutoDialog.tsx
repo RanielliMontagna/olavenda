@@ -19,8 +19,6 @@ const AdicionarEditarProdutoDialog = (props: IAdicionarEditarProdutoDialog) => {
     })
     .required();
 
-  console.log(props.produto);
-
   const _categoriaSelecionada = categorias.find((categoria) => categoria?.nome === props.produto?.categoria);
   const _classificacaoFiscalSelecionada = classificacoesFiscais.find(
     (classificacaoFiscal) => classificacaoFiscal?.id === props.produto?.classificacaoFiscal

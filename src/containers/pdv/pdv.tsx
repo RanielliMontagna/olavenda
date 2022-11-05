@@ -1,20 +1,24 @@
+import { useMemo } from 'react';
+import { FiShoppingCart, FiTrash } from 'react-icons/fi';
+import { Button, Grid, Tooltip, Typography, useTheme } from '@mui/material';
+
 import { center } from 'styles/shared.styles';
 import { ButtonDiv, CartContainer, CartResume, Paper } from './pdv.styles';
-
-import { Button, Grid, Tooltip, Typography, useTheme } from '@mui/material';
-import { FiShoppingCart, FiTrash } from 'react-icons/fi';
+import { PdvProvider, usePdvContext } from './pdv.context';
 
 import { Form } from 'components/form/form';
 import { PageHeader } from 'components/pageHeader/pageHeader';
+import { formatToReal } from 'utils/formatToReal';
+import { LeituraCodigo } from './leituraCodigo/leituraCodigo';
+
 import { Cards } from './cards/cards';
 import { Cart } from './cart/cart';
-import { PdvProvider, usePdvContext } from './pdv.context';
-import { useMemo } from 'react';
-import { formatToReal } from 'utils/formatToReal';
 
 const Pdv = () => {
   const { methods, produtosMethods } = usePdvContext();
   const { palette } = useTheme();
+
+  LeituraCodigo();
 
   const total = useMemo(() => {
     return produtosMethods.fields.reduce((acc, item) => {
