@@ -3,6 +3,7 @@ const urls = {
   categorias: '/Categorias',
   classificacaoFiscal: '/ClassificacoesFiscais',
   clientes: '/Clientes',
+  usuarios: '/user',
 };
 
 export { urls };

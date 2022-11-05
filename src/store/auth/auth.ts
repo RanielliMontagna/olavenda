@@ -8,6 +8,7 @@ import { getSessionToken, setSessionToken, removeSessionToken } from 'helpers/se
 const defaultState: AuthStates = {
   token: null,
   isAuthenticated: false,
+  user: null,
 };
 let initialState = defaultState;
 
@@ -17,6 +18,7 @@ if (token) {
   initialState = {
     token: token,
     isAuthenticated: true,
+    user: null,
   };
 }
 
@@ -39,6 +41,7 @@ const useAuth = create<AuthStore>((set) => ({
     removeLocalToken();
     set(defaultState);
   },
+  setUser: (user) => set({ user }),
 }));
 
 export default useAuth;

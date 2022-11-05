@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 import { setTheme } from 'helpers/localStorage/localStorage';
 import useApp from 'store/app/app';
 import useAuth from 'store/auth/auth';
+import { dadosUsuario } from 'service/user/user';
 
 const useAppBar = () => {
-  const { clearStore } = useAuth();
-  const { themeMode, setThemeMode } = useApp();
+  const { clearStore, setUser } = useAuth();
+  const { themeMode, setThemeMode, handleError } = useApp();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -31,6 +32,24 @@ const useAppBar = () => {
     clearStore();
     handleCloseMenu();
   };
+
+  const buscarUser = useCallback(async () => {
+    try {
+      const response = await dadosUsuario();
+
+      setUser({
+        id: response.data.id,
+        name: response.data.name,
+        email: response.data.email,
+      });
+    } catch (error) {
+      handleError(error);
+    }
+  }, [handleError, setUser]);
+
+  useEffect(() => {
+    buscarUser();
+  }, [buscarUser]);
 
   return {
     handleChangeTheme,

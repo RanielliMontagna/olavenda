@@ -5,9 +5,12 @@ import { AppBarContainer, ProfileContainer } from './appBar.styles';
 import { useAppBar } from './useApp';
 
 import { FiChevronDown } from 'react-icons/fi';
+import useAuth from 'store/auth/auth';
 
 const AppBar = () => {
-  const { handleChangeTheme, mode, anchorElMenu, handleCloseMenu, handleOpenMenu, handleLogout } = useAppBar();
+  const { user } = useAuth();
+  const { handleChangeTheme, mode, anchorElMenu, handleCloseMenu, handleOpenMenu, handleLogout } =
+    useAppBar();
 
   return (
     <AppBarContainer>
@@ -21,7 +24,7 @@ const AppBar = () => {
         }}
       >
         <Avatar />
-        <Typography>Raul Pacheco</Typography>
+        <Typography>{user?.name}</Typography>
         <FiChevronDown className="icon" color={mode === 'dark' ? '#fff' : '#000'} />
       </ProfileContainer>
       <Menu
