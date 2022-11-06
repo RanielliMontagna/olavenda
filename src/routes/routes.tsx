@@ -6,7 +6,7 @@ import { PrivateWrapper } from 'components/layout/privateWrapper/privateWrapper'
 import Pdv from 'containers/pdv/pdv';
 import Produtos from 'containers/produtos/produtos';
 import Clientes from 'containers/clientes/clientes';
-import { Vendas } from 'containers/vendas/vendas';
+import Vendas from 'containers/vendas/vendas';
 
 import { Login } from 'containers/login/login';
 import { NotFound } from 'containers/404/404';

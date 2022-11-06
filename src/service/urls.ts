@@ -4,6 +4,7 @@ const urls = {
   classificacaoFiscal: '/ClassificacoesFiscais',
   clientes: '/Clientes',
   usuarios: '/user',
+  vendas: '/vendas',
 };
 
 export { urls };

@@ -2,17 +2,17 @@ import { GridColDef } from '@mui/x-data-grid';
 
 export const colunasVendas: GridColDef[] = [
   {
-    field: 'numero',
+    field: 'id',
     headerName: 'Numero',
     flex: 1,
   },
   {
-    field: 'cliente',
+    field: 'Cliente',
     headerName: 'Cliente',
     flex: 1,
   },
   {
-    field: 'valorTotal',
+    field: 'Valor',
     headerName: 'Valor Total',
     flex: 1,
   },
