@@ -5,9 +5,24 @@ import { FiSearch } from 'react-icons/fi';
 import { TextField } from 'components/textField/textField';
 import { Autocomplete } from 'components/autoComplete/autoComplete';
 import { usePdvContext } from '../pdv.context';
+import { useFormContext } from 'react-hook-form';
+import { useCallback } from 'react';
 
 const Cards = () => {
-  const { produtos, handleBuscarProdutos } = usePdvContext();
+  const { produtos, handleBuscarProdutos, categorias } = usePdvContext();
+  const { watch } = useFormContext();
+
+  const cards = useCallback(() => {
+    if (watch()?.categorias?.value !== -1) {
+      return produtos
+        ?.map((value) => <Card key={value.id} {...value} />)
+        .filter((value) => {
+          return value.props.categoria === watch()?.categorias?.label;
+        });
+    } else {
+      return produtos?.map((value) => <Card key={value.id} {...value} />);
+    }
+  }, [produtos, watch]);
 
   return (
     <CardsContainerExterno>
@@ -39,16 +54,16 @@ const Cards = () => {
               value: -1,
               label: 'Todas',
             },
+            ...categorias.map((categoria) => ({
+              value: categoria.id,
+              label: categoria.nome,
+            })),
           ]}
           style={{ width: 200 }}
         />
       </div>
       <CardsContainerInterno>
-        <div>
-          {produtos.map((value) => (
-            <Card key={value.id} {...value} />
-          ))}
-        </div>
+        <div>{cards()}</div>
       </CardsContainerInterno>
     </CardsContainerExterno>
   );

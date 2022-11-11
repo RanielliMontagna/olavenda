@@ -1,10 +1,12 @@
-import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
+import { createContext, PropsWithChildren, useCallback, useContext, useEffect, useState } from 'react';
 import { useFieldArray, UseFieldArrayReturn, useForm, UseFormReturn } from 'react-hook-form';
 import { throttle } from 'lodash';
 
 import { buscarProdutoComFiltro, buscarProdutos } from 'service/produtos/produtos';
 import { IProdutoValues } from 'service/produtos/produtos.types';
 import useApp from 'store/app/app';
+import { ICategoriaValues } from 'service/categorias/categorias.types';
+import { buscarCategorias } from 'service/categorias/categorias';
 
 interface ProdutoForm extends IProdutoValues {
   quantidade: number;
@@ -20,19 +22,35 @@ interface IPdvContext {
   produtosMethods: UseFieldArrayReturn<IPdvFormValues>;
   produtos: IProdutoValues[];
   handleBuscarProdutos: (term: string) => void;
+  categorias: ICategoriaValues[];
 }
 
 const PdvContext = createContext({} as IPdvContext);
 
 const PdvProvider = ({ children }: PropsWithChildren) => {
-  const { handleError } = useApp();
+  const { handleError, setLoading } = useApp();
 
   const [produtos, setProdutos] = useState<IProdutoValues[]>([]);
+  const [categorias, setCategorias] = useState<ICategoriaValues[]>([]);
+
   const methods = useForm<IPdvFormValues>();
   const produtosMethods = useFieldArray<IPdvFormValues>({
     control: methods.control,
     name: 'produtos',
   });
+
+  const _handleBuscarCategorias = useCallback(async () => {
+    setLoading(true);
+
+    try {
+      const response = await buscarCategorias({});
+      setCategorias(response.data.Categorias);
+    } catch (err) {
+      handleError(err);
+    }
+
+    setLoading(false);
+  }, [handleError, setLoading]);
 
   const _handleBuscarProdutos = async () => {
     try {
@@ -63,6 +81,7 @@ const PdvProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     _handleBuscarProdutos();
+    _handleBuscarCategorias();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -73,6 +92,7 @@ const PdvProvider = ({ children }: PropsWithChildren) => {
         produtosMethods,
         produtos,
         handleBuscarProdutos,
+        categorias,
       }}
     >
       {children}
