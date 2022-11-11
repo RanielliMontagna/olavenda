@@ -2,7 +2,11 @@ import styled from '@emotion/styled';
 import { coresCategorias } from 'styles/theme';
 import { pixelToRem } from 'utils/pixelToRem';
 
-export const CardContainer = styled.div`
+export interface CardContainerProps {
+  cor: 0 | 1 | 2 | 3 | 4 | 5;
+}
+
+export const CardContainer = styled.div<CardContainerProps>`
   width: calc(100% / 4 - ${pixelToRem(12)});
   height: 150px;
   border-radius: ${pixelToRem(8)};
@@ -17,9 +21,8 @@ export const CardContainer = styled.div`
 
   color: white;
 
-  background-color: ${() => {
-    const numero = Math.floor(Math.random() * 6);
-    return coresCategorias[numero];
+  background-color: ${({ cor }) => {
+    return coresCategorias[cor];
   }};
 
   &:hover {

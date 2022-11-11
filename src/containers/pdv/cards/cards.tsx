@@ -49,6 +49,9 @@ const Cards = () => {
             value: -1,
             label: 'Todas',
           }}
+          autoCompleteProps={{
+            disableClearable: true,
+          }}
           options={[
             {
               value: -1,

@@ -2,7 +2,15 @@ import { Controller, useFormContext } from 'react-hook-form';
 import { Autocomplete as AutocompleteMui, TextField } from '@mui/material';
 import type { IAutocomplete } from './autoComplete.types';
 
-const Autocomplete = ({ name, defaultValue, rules, shouldUnregister, options, ...rest }: IAutocomplete) => {
+const Autocomplete = ({
+  name,
+  defaultValue,
+  rules,
+  shouldUnregister,
+  options,
+  autoCompleteProps,
+  ...rest
+}: IAutocomplete) => {
   const useForm = useFormContext();
 
   if (!useForm) {
@@ -22,6 +30,7 @@ const Autocomplete = ({ name, defaultValue, rules, shouldUnregister, options, ..
           value={value || null}
           onChange={(_, values) => onChange(values)}
           options={options}
+          {...autoCompleteProps}
           renderInput={(params) => <TextField {...params} {...rest} />}
         />
       )}
