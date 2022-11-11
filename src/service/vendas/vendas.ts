@@ -7,7 +7,7 @@ import { IBuscarVenda, INovaVenda } from './vendas.types';
 export const buscarVendas = async ({ id }: IBuscarVenda) => {
   const headers = makeHeaders();
 
-  const response = await api.get(`${urls.vendas}/`, {
+  const response = await api.get(`${urls.vendas}`, {
     headers,
     params: {
       id,
@@ -16,7 +16,6 @@ export const buscarVendas = async ({ id }: IBuscarVenda) => {
 
   return response;
 };
-
 
 // Adicionar uma Venda
 export const adicionarVenda = async (Venda: INovaVenda) => {

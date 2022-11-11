@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { FiShoppingCart, FiTrash } from 'react-icons/fi';
 import { Button, Grid, Tooltip, Typography, useTheme } from '@mui/material';
 
@@ -13,10 +13,13 @@ import { LeituraCodigo } from './leituraCodigo/leituraCodigo';
 
 import { Cards } from './cards/cards';
 import { Cart } from './cart/cart';
+import { PagamentoDialog } from './pagamentoDialog/pagamentoDialog';
 
 const Pdv = () => {
   const { methods, produtosMethods } = usePdvContext();
   const { palette } = useTheme();
+
+  const [pagamentoDialog, setPagamentoDialog] = useState({ open: false });
 
   LeituraCodigo();
 
@@ -52,10 +55,17 @@ const Pdv = () => {
                   </ButtonDiv>
                 </Tooltip>
               </CartResume>
-              <Button size="large">Pagar</Button>
+              <Button
+                size="large"
+                onClick={() => setPagamentoDialog({ open: true })}
+                disabled={produtosMethods.fields.length === 0}
+              >
+                Pagar
+              </Button>
             </CartContainer>
           </Paper>
         </Grid>
+        {pagamentoDialog.open && <PagamentoDialog handleClose={() => setPagamentoDialog({ open: false })} />}
       </form>
     </Form>
   );

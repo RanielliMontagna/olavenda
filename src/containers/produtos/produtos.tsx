@@ -17,6 +17,8 @@ import { RemoverProdutoDialog } from './removerProdutoDialog/removerProdutoDialo
 import { IAdicionarEditarProdutoState } from 'shared/adicionarEditarProdutoDialog/adicionarEditarProduto.types';
 import AdicionarEditarProdutoDialog from 'shared/adicionarEditarProdutoDialog/adicionarEditarProdutoDialog';
 import { ProdutoProvider } from './produto.context';
+import { MdCategory } from 'react-icons/md';
+import { CategoriasDialog } from './categoriasDialog/categoriasDialog';
 
 const Produtos = () => {
   const { data, handleBuscarProdutos } = useProdutos();
@@ -26,21 +28,37 @@ const Produtos = () => {
   const [excluirProdutoDialog, setExcluirProdutoDialog] = useState<IRemoverProdutoState>({
     open: false,
   });
+  const [categoriasDialog, setCategoriasDialog] = useState({ open: false });
 
   return (
     <Grid container padding={2}>
       <PageHeader
         title="Produtos"
         rightContent={
-          <Button
-            startIcon={<AiOutlinePlus color="white" />}
-            variant="contained"
-            onClick={() => {
-              setAdicionarEditarProdutoDialog({ open: true });
-            }}
-          >
-            Novo Produto
-          </Button>
+          <Grid container spacing={2}>
+            <Grid item>
+              <Button
+                startIcon={<MdCategory />}
+                variant="contained"
+                onClick={() => {
+                  setCategoriasDialog({ open: true });
+                }}
+              >
+                Gerenciar categorias
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                startIcon={<AiOutlinePlus color="white" />}
+                variant="contained"
+                onClick={() => {
+                  setAdicionarEditarProdutoDialog({ open: true });
+                }}
+              >
+                Novo Produto
+              </Button>
+            </Grid>
+          </Grid>
         }
       />
       <GridPaper item xs={12}>
@@ -121,6 +139,9 @@ const Produtos = () => {
             handleBuscarProdutos={handleBuscarProdutos}
             handleClose={() => setAdicionarEditarProdutoDialog({ open: false })}
           />
+        )}
+        {categoriasDialog.open && (
+          <CategoriasDialog handleClose={() => setCategoriasDialog({ open: false })} />
         )}
       </GridPaper>
     </Grid>
