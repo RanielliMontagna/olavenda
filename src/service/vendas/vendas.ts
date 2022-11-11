@@ -28,7 +28,7 @@ export const adicionarVenda = async (Venda: INovaVenda) => {
 // Excluir uma Venda
 export const excluirVenda = async (id: number) => {
   const headers = makeHeaders();
-  const response = await api.delete(`${urls.vendas}/delete/${id}`, { headers });
+  const response = await api.delete(`${urls.vendas}/${id}`, { headers });
 
   return response;
 };
