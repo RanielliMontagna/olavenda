@@ -3,7 +3,6 @@ import { Grid } from '@mui/material';
 import { TextField } from 'components/textField/textField';
 
 import { IAdicionarEditarProdutoFormValues } from '../adicionarEditarProduto.types';
-import Creatable from 'components/creatable/creatable';
 import { Autocomplete } from 'components/autoComplete/autoComplete';
 import { useProdutoContext } from '../../../containers/produtos/produto.context';
 
@@ -31,15 +30,15 @@ const Fields = () => {
         />
       </Grid>
       <Grid item xs={12}>
-        <Creatable
-          textFieldProps={{
-            label: 'Categorias',
-          }}
+      <Autocomplete
+          label="Categorias"
           name="categoria"
           options={categorias.map((categoria) => ({
             label: categoria.nome,
             value: categoria.id,
           }))}
+          error={!!formState.errors.categoria}
+          helperText={formState.errors.categoria?.message}
         />
       </Grid>
       <Grid item xs={12}>
