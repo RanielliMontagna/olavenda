@@ -44,7 +44,7 @@ const Produtos = () => {
                   setCategoriasDialog({ open: true });
                 }}
               >
-                Gerenciar categorias
+                Gerenciar Categorias
               </Button>
             </Grid>
             <Grid item>
