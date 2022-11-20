@@ -25,7 +25,7 @@ const Pdv = () => {
 
   const total = useMemo(() => {
     return produtosMethods.fields.reduce((acc, item) => {
-      return acc + item.valor;
+      return acc + item.valor * item.quantidade;
     }, 0);
   }, [produtosMethods.fields]);
 

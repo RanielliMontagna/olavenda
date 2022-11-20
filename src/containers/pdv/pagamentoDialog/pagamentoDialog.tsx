@@ -11,7 +11,7 @@ const PagamentoDialog = ({ handleClose }: IPagamentoDialogProps) => {
   const { clientes, handleSubmit } = usePagamentoDialog({ handleClose });
 
   const _valorTotal = produtosMethods.fields.reduce((acc, item) => {
-    return acc + item.valor;
+    return acc + item.valor * item.quantidade;
   }, 0);
 
   return (
