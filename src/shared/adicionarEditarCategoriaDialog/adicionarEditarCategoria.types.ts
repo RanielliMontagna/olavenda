@@ -14,5 +14,5 @@ export interface IAdicionarEditarCategoriaDialog extends IAdicionarEditarCategor
 export interface IAdicionarEditarCategoriaFormValues {
   id: number;
   nome: string;
-  cores: string;
+  cores: number;
 }

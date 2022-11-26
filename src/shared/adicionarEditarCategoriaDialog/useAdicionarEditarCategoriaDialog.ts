@@ -19,7 +19,7 @@ const useAdicionarEditarCategoriaDialog = ({
         //Adicionar categoria
         const response = await adicionarCategoria({
           nome: data.nome,
-          cores: data.cores,
+          cores: String(data.cores),
         });
 
         if (response.data.Sucesso) {
@@ -39,7 +39,7 @@ const useAdicionarEditarCategoriaDialog = ({
         const response = await editarCategoria({
           id: Number(categoria.id),
           nome: data.nome,
-          cores: data.cores,
+          cores: String(data.cores),
         });
         if (response.data.Sucesso) {
           setNotification({

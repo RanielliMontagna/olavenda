@@ -26,7 +26,7 @@ const AdicionarEditarCategoriaDialog = (props: IAdicionarEditarCategoriaDialog) 
         resolver={yupResolver(schema)}
         defaultValues={{
           nome: props.categoria?.nome,
-          cores: props.categoria?.cores,
+          cores: Number(props.categoria?.cores),
         }}
       >
         <DialogContent>
